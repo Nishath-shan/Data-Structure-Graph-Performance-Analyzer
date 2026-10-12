@@ -1,6 +1,8 @@
 package com.cit300.analyzer;
 
 public class LinkedListStructure {
+
+    private final PerformanceTracker performanceTracker;
     
     private static class Node {
         int data;
@@ -16,6 +18,14 @@ public class LinkedListStructure {
     private int size;
     
     public LinkedListStructure() {
+        this(new PerformanceTracker());
+    }
+
+    public LinkedListStructure(PerformanceTracker performanceTracker) {
+        if (performanceTracker == null) {
+            throw new IllegalArgumentException("Performance tracker cannot be null.");
+        }
+        this.performanceTracker = performanceTracker;
         this.head = null;
         this.size = 0;
     }
@@ -42,7 +52,7 @@ public class LinkedListStructure {
         size++;
         
         long elapsedTime = System.nanoTime() - startTime;
-        PerformanceTracker.record("Insert", size, steps, elapsedTime, "Inserted value: " + value);
+        performanceTracker.record("Insert", size, steps, elapsedTime, "Inserted value: " + value);
     }
     
    
@@ -53,7 +63,7 @@ public class LinkedListStructure {
         if (head == null) {
             System.out.println("List is empty. Cannot delete.");
             long elapsedTime = System.nanoTime() - startTime;
-            PerformanceTracker.record("Delete", size, steps, elapsedTime, "Failed: Empty list");
+            performanceTracker.record("Delete", size, steps, elapsedTime, "Failed: Empty list");
             return;
         }
         
@@ -62,7 +72,7 @@ public class LinkedListStructure {
             head = head.next;
             size--;
             long elapsedTime = System.nanoTime() - startTime;
-            PerformanceTracker.record("Delete", size, steps, elapsedTime, "Deleted head value: " + value);
+            performanceTracker.record("Delete", size, steps, elapsedTime, "Deleted head value: " + value);
             return;
         }
         
@@ -77,11 +87,11 @@ public class LinkedListStructure {
             current.next = current.next.next;
             size--;
             long elapsedTime = System.nanoTime() - startTime;
-            PerformanceTracker.record("Delete", size, steps, elapsedTime, "Deleted value: " + value);
+            performanceTracker.record("Delete", size, steps, elapsedTime, "Deleted value: " + value);
         } else {
             System.out.println("Value " + value + " not found in the list.");
             long elapsedTime = System.nanoTime() - startTime;
-            PerformanceTracker.record("Delete", size, steps, elapsedTime, "Failed: Value not found");
+            performanceTracker.record("Delete", size, steps, elapsedTime, "Failed: Value not found");
         }
     }
     
@@ -102,7 +112,7 @@ public class LinkedListStructure {
         }
         
         long elapsedTime = System.nanoTime() - startTime;
-        PerformanceTracker.record("Search", size, steps, elapsedTime, "Searched for " + value + ", Found: " + found);
+        performanceTracker.record("Search", size, steps, elapsedTime, "Searched for " + value + ", Found: " + found);
         return found;
     }
     
