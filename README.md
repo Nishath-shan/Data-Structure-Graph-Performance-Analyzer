@@ -18,6 +18,15 @@ This Java console application lets students try common data structures and algor
 | M.I. Rimas Ahamad | 23DA2-0828 | Stack and queue operations |
 | H.K. Chathurika Harshani | 23DA2-0886 | Linked-list operations |
 
+## 👨‍💻 Individual Contributions
+
+Each team member contributed to their assigned component of the project.
+
+- **M.R.M. Nishath (Team Leader):** Responsible for graph operations, BFS and DFS traversal, and integrating the components into the main application.
+- **Mohammed Azam:** Responsible for array operations and searching algorithms, including linear search and binary search.
+- **M.I. Rimas Ahamad:** Responsible for stack and circular queue operations.
+- **H.K. Chathurika Harshani:** Responsible for linked-list operations, including insertion, deletion, searching, and displaying values.
+
 ## 🛠️ Technologies Used
 
 | Technology | Use |
